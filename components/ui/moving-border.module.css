@@ -1,0 +1,20 @@
+.movingBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+
+.buttonContainer {
+  border-radius: var(--border-radius);
+}
+
+.borderDiv {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--border-radius) * 0.96);
+}
+
+.innerDiv {
+  border-radius: calc(var(--border-radius) * 0.96);
+}
