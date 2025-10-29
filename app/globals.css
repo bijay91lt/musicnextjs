@@ -49,3 +49,22 @@ body {
     transform: translate(calc(-50% - 0.5rem));
   }
 }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) linear infinite;
+  animation-direction: var(--animation-direction, forwards);
+  will-change: transform;
+}
+
+/* .animate-scroll:hover {
+  animation-play-state: paused;
+} */
