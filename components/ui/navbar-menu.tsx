@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {motion, Transition} from "framer-motion";
+import { motion, Transition } from "framer-motion";
 import { LinkProps } from "next/link";
 
 const transition: Transition = {
@@ -118,7 +118,7 @@ export const HoveredLink = ({ children, ...rest }: HoveredLinkProps) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black "
+      className="text-neutral-700 dark:text-neutral-200 hover:text-blue-500 "
     >
       {children}
     </Link>

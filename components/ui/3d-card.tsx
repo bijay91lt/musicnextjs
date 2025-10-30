@@ -19,10 +19,12 @@ export const CardContainer = ({
   children,
   className,
   containerClassName,
+  id,
 }: {
   children?: React.ReactNode;
   className?: string;
   containerClassName?: string;
+  id?: string;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMouseEntered, setIsMouseEntered] = useState(false);
@@ -49,6 +51,7 @@ export const CardContainer = ({
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
+        id={id}
         className={cn(
           "py-20 flex items-center justify-center",
           styles.container,

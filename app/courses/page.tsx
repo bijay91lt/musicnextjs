@@ -12,7 +12,11 @@ function page() {
       </h1>
       <div className="flex flex-wrap justify-center">
         {courseData.courses.map((course) => (
-          <CardContainer key={course.id} className="inter-var m-4">
+          <CardContainer
+            key={course.id}
+            id={course.slug}
+            className="inter-var m-4"
+          >
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/10 dark:bg-black dark:border-white/2 border-black/1 w-auto sm:w-120 h-auto rounded-xl p-6 border  ">
               <CardItem
                 translateZ="50"
