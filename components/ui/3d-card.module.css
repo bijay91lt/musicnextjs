@@ -1,0 +1,7 @@
+.container {
+  perspective: 1000px;
+}
+
+.inner {
+  transform-style: preserve-3d;
+}
