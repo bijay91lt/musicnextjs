@@ -1,12 +1,12 @@
 "use client";
 
 import { cn } from "@/utils/utils";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "normal",
   pauseOnHover = true,
   className,
 }: {
@@ -24,20 +24,20 @@ export const InfiniteMovingCards = ({
   const scrollerRef = React.useRef<HTMLUListElement>(null);
   const [start, setStart] = useState(false);
 
-  function getDirection() {
+  const getDirection = useCallback(() => {
     if (!containerRef.current) return;
     containerRef.current.style.setProperty(
       "--animation-direction",
       direction === "left" ? "forwards" : "reverse"
     );
-  }
+  }, [direction]);
 
-  function getSpeed() {
+  const getSpeed = useCallback(() => {
     if (!containerRef.current) return;
     const duration =
       speed === "fast" ? "20s" : speed === "normal" ? "40s" : "80s";
     containerRef.current.style.setProperty("--animation-duration", duration);
-  }
+  }, [speed]);
 
   useEffect(() => {
     const addAnimation = () => {
@@ -57,18 +57,17 @@ export const InfiniteMovingCards = ({
     };
 
     addAnimation();
-  }, []); // safe because refs and props are stable
-
-  
+  }, [getDirection, getSpeed]);
 
   return (
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 max-w-7xl overflow-hidden [linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
     >
+      <div className="absolute inset-0 dark:bg-black dark:bg-grid-white/[0.2] -z-10"></div>
       <ul
         ref={scrollerRef}
         className={cn(
@@ -85,7 +84,7 @@ export const InfiniteMovingCards = ({
             <blockquote>
               <div
                 aria-hidden="true"
-                className="pointer-events-none user-select-none absolute -top-0.5 -left-0.5 -z-[1] h-[calc(100%+4px)] w-[calc(100%+4px)]"
+                className="pointer-events-none user-select-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%+4px)] w-[calc(100%+4px)]"
               ></div>
               <span className="relative z-20 text-sm font-normal leading-[1.6] text-neutral-800 dark:text-gray-100">
                 {item.quote}
