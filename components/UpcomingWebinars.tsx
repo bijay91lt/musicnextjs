@@ -30,7 +30,6 @@ function UpcomingWebinars() {
       slug: "music-production-essentials",
       isFeatured: true,
     },
-    // Added two more webinars
     {
       title: "Live Performance Techniques",
       description:
